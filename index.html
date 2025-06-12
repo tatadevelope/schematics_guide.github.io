@@ -2,18 +2,238 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>📡 Туториал по схемотехнике</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📡 Полный туториал по схемотехнике</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        .formula {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        .example {
+            background: #e8f4f8;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 15px auto;
+            border: 1px solid #ddd;
+        }
+        nav {
+            background: #2c3e50;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        nav a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        .circuit {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+    </style>
+    <!-- MathJax для красивых формул -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Основы схемотехники</h1>
-        <p>Здесь будут аналоговые и цифровые схемы с формулами.</p>
-        
-        <h2>Делитель напряжения</h2>
-        <div class="formula">
-            \( V_{out} = V_{in} \cdot \frac{R_2}{R_1 + R_2} \)
-        </div>
+    <nav>
+        <a href="#analog">Аналоговые схемы</a> | 
+        <a href="#digital">Цифровые схемы</a> | 
+        <a href="#power">Источники питания</a> |
+        <a href="#references">Ссылки</a>
+    </nav>
+
+    <h1>📡 Полный туториал по схемотехнике</h1>
+    <p>Справочник по типовым аналоговым и цифровым схемам с формулами расчета.</p>
+
+    <h2 id="analog">🔌 Аналоговые схемы</h2>
+
+    <h3>1. Делитель напряжения</h3>
+    <div class="circuit">
+        <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/dccircuits-dcp7.gif" alt="Делитель напряжения" width="200">
     </div>
+    <div class="formula">
+        \[ V_{out} = V_{in} \cdot \frac{R_2}{R_1 + R_2} \]
+    </div>
+    <div class="example">
+        <strong>Пример:</strong> При \( V_{in} = 12В \), \( R_1 = 10кОм \), \( R_2 = 5кОм \):<br>
+        \( V_{out} = 12 \cdot \frac{5000}{10000 + 5000} = 4В \)
+    </div>
+
+    <h3>2. Операционные усилители</h3>
+    
+    <h4>Инвертирующий усилитель</h4>
+    <div class="circuit">
+        <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2013/08/opamp2.gif" alt="Инвертирующий усилитель" width="300">
+    </div>
+    <div class="formula">
+        \[ V_{out} = -V_{in} \cdot \frac{R_f}{R_{in}} \]
+    </div>
+
+    <h4>Неинвертирующий усилитель</h4>
+    <div class="circuit">
+        <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2013/08/opamp3.gif" alt="Неинвертирующий усилитель" width="300">
+    </div>
+    <div class="formula">
+        \[ V_{out} = V_{in} \cdot \left(1 + \frac{R_f}{R_{in}}\right) \]
+    </div>
+
+    <h3>3. RC-фильтры</h3>
+    
+    <h4>ФНЧ (Фильтр низких частот)</h4>
+    <div class="circuit">
+        <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2018/01/filter-first-order-figure1-1.gif" alt="RC ФНЧ" width="200">
+    </div>
+    <div class="formula">
+        \[ f_c = \frac{1}{2\pi RC} \]
+    </div>
+
+    <h4>ФВЧ (Фильтр высоких частот)</h4>
+    <div class="circuit">
+        <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2018/01/filter-rc-high-pass-figure2-1.gif" alt="RC ФВЧ" width="200">
+    </div>
+    <div class="formula">
+        \[ f_c = \frac{1}{2\pi RC} \]
+    </div>
+
+    <h2 id="digital">🔢 Цифровые схемы</h2>
+
+    <h3>1. Логические элементы</h3>
+    <table>
+        <tr>
+            <th>Элемент</th>
+            <th>Обозначение</th>
+            <th>Функция</th>
+            <th>Таблица истинности</th>
+        </tr>
+        <tr>
+            <td>NOT</td>
+            <td>¬A</td>
+            <td>Инверсия</td>
+            <td>A | OUT<br>0 | 1<br>1 | 0</td>
+        </tr>
+        <tr>
+            <td>AND</td>
+            <td>A ∧ B</td>
+            <td>Логическое И</td>
+            <td>A B | OUT<br>0 0 | 0<br>0 1 | 0<br>1 0 | 0<br>1 1 | 1</td>
+        </tr>
+        <tr>
+            <td>OR</td>
+            <td>A ∨ B</td>
+            <td>Логическое ИЛИ</td>
+            <td>A B | OUT<br>0 0 | 0<br>0 1 | 1<br>1 0 | 1<br>1 1 | 1</td>
+        </tr>
+    </table>
+
+    <h3>2. Триггеры</h3>
+    
+    <h4>RS-триггер (на элементах ИЛИ-НЕ)</h4>
+    <div class="circuit">
+        <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/sequential-seq3.gif" alt="RS-триггер" width="200">
+    </div>
+    <table>
+        <tr>
+            <th>S</th>
+            <th>R</th>
+            <th>Q</th>
+            <th>¬Q</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>1</td>
+            <td>0</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>Последнее состояние</td>
+            <td>Последнее состояние</td>
+        </tr>
+    </table>
+
+    <h3>3. ЦАП (R-2R лестница)</h3>
+    <div class="circuit">
+        <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2013/11/dac5.gif" alt="ЦАП R-2R" width="300">
+    </div>
+    <div class="formula">
+        \[ V_{out} = V_{ref} \cdot \frac{D}{2^n} \]
+        <p>где \( D \) - цифровой код, \( n \) - разрядность</p>
+    </div>
+
+    <h2 id="power">🔋 Источники питания</h2>
+
+    <h3>1. Линейный стабилизатор (LDO)</h3>
+    <div class="circuit">
+        <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/dccircuits-dcp22.gif" alt="LDO схема" width="300">
+    </div>
+    <div class="formula">
+        \[ V_{out} = V_{ref} \cdot \left(1 + \frac{R_2}{R_1}\right) \]
+    </div>
+
+    <h3>2. Импульсный стабилизатор (Buck)</h3>
+    <div class="circuit">
+        <img src="https://www.electronics-tutorials.ws/wp-content/uploads/2018/05/dccircuits-dcp25.gif" alt="Buck converter" width="300">
+    </div>
+    <div class="formula">
+        \[ V_{out} = D \cdot V_{in} \]
+        <p>где \( D \) - коэффициент заполнения ШИМ</p>
+    </div>
+
+    <h2 id="references">📚 Полезные ссылки</h2>
+    <ul>
+        <li><a href="https://www.electronics-tutorials.ws/" target="_blank">Electronics Tutorials</a> - отличные объяснения схем</li>
+        <li><a href="https://www.falstad.com/circuit/" target="_blank">Falstad Circuit Simulator</a> - онлайн симулятор</li>
+        <li><a href="https://github.com/" target="_blank">GitHub</a> - хостинг для вашего проекта</li>
+    </ul>
+
+    <footer>
+        <p>© 2023 Схемотехника для всех</p>
+    </footer>
 </body>
 </html>
